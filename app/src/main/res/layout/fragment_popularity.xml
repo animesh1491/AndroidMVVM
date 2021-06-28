@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.simplemvvmexample.viewmodel.FragmentInteractionVM" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:padding="16dp"
+        android:background="@color/white"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_popularity_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textColor="@color/black"
+            android:text="@{viewModel.likeCount.toString()}"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/bt_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            app:layout_constraintTop_toBottomOf="@id/tv_popularity_count"
+            app:layout_constraintStart_toStartOf="@id/tv_popularity_count"
+            app:layout_constraintEnd_toEndOf="@id/tv_popularity_count"
+            android:layout_marginTop="20dp"
+            android:onClick="@{(v) -> viewModel.hitLike()}"
+            android:text="Hit To Like" />
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/bt_like"
+            app:layout_constraintTop_toTopOf="@id/bt_like"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            app:bindPopularInage="@{viewModel.popularity}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
